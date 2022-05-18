@@ -32,18 +32,23 @@
                                     <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Modifica</a>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-danger btn-delete" data-id="{{ $post->id }}">Cancella</button>
+                                    <form id="confirmation-overlay" action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button id="confirmation-overlay" class="btn btn-danger btn-delete" data-id="{{ $post->id }}">Cancella</button>
+                                  </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4">Crea un nuovo post</a>
             </div>
         </div>
 
         {{ $posts->links() }}
 
-        <section id="confirmation-overlay" class="overlay d-none">
+        {{-- <section id="confirmation-overlay" class="overlay d-none">
             <div class="popup">
                 <h1>Sei sicuro di voler eliminare?</h1>
                 <div class="d-flex justify-content-center">
@@ -55,6 +60,6 @@
                     </form>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </div>
 @endsection

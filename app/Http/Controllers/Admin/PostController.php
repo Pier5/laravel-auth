@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    protected $validationRules = [
+        "title"       => "required",
+        "description" => "required",       
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +32,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -38,7 +43,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationRules);
+        $formData = $request->all();
+        Post::create($formData);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -61,7 +69,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -73,7 +81,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate($this->validationRules);
+        $formData = $request->all();
+        $post->update($formData);
+        return redirect()->route('admin.posts.index', $post->id);
     }
 
     /**
@@ -84,6 +95,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }
