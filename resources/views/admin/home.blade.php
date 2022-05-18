@@ -18,6 +18,7 @@
                 </div>
             </div>
         </div>
+        <h1 class="fs-2 mt-3">Vai alla <a class="text-decoration-none" href="{{ route('admin.posts.index') }}">Home</a></h1>
     </div>
 </div>
 @endsection

@@ -24,8 +24,8 @@
                         @foreach ($posts as $post)
                             <tr>
                                 <th class="text-center" scope="row">{{ $post->id }}</th>
-                                <td>{{ $post->title }}</td>
-                                <td>{{ $post->slug }}</td>
+                                <td class="text-center">{{ $post->title }}</td>
+                                <td class="text-center">{{ $post->slug }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->updated_at)) }}</td>
                                 <td>

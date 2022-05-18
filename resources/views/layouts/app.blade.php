@@ -66,6 +66,11 @@
                                     </form>
                                 </div>
                             </li>
+                            <a class="mt-2 ps-2 text-decoration-none" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
                         @endguest
                     </ul>
                 </div>
