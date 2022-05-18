@@ -42,7 +42,10 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4">Crea un nuovo post</a>
+                <div class="d-flex">
+                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4 me-auto">Crea un nuovo post</a>
+                    <a href="{{ route('admin.home') }}" class="btn btn-dark mb-4">Torna al Logout</a>
+                </div>
             </div>
         </div>
 
