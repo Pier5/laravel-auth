@@ -16,7 +16,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ route('admin.posts.update', $post->id) }}">
+            <form method="POST" action="{{ route('admin.posts.update', $post->slug) }}">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

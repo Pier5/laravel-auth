@@ -10,8 +10,8 @@ class PostController extends Controller
 {
 
     protected $validationRules = [
-        "title"       => "required",
-        "description" => "required",       
+        "title"       => "required|max:100",
+        "description" => "required|min:50|max:300",       
     ];
     /**
      * Display a listing of the resource.
@@ -84,7 +84,7 @@ class PostController extends Controller
         $request->validate($this->validationRules);
         $formData = $request->all();
         $post->update($formData);
-        return redirect()->route('admin.posts.index', $post->id);
+        return redirect()->route('admin.posts.index', $post->slug);
     }
 
     /**

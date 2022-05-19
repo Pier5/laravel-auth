@@ -21,7 +21,7 @@
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
-                            <tr>
+                            <tr data-id="{{ $post->slug }}">
                                 <td class="text-center">{{ $post->id }}</td>
                                 <td class="text-center">{{ $post->title }}</td>
                                 <td class="text-center">{{ $post->slug }}</td>
@@ -34,11 +34,9 @@
                                     <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
                                 </td>
                                 <td class="text-center">
-                                    <form id="confirmation-overlay" action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button id="confirmation-overlay" class="btn btn-danger btn-delete" data-id="{{ $post->slug }}">Cancella</button>
-                                  </form>
+                                    
+                                    <button class="btn btn-danger btn-delete">Cancella</button>
+                                  
                                 </td>
                             </tr>
                         @endforeach
@@ -53,18 +51,18 @@
 
         {{ $posts->links() }}
 
-        {{-- <section id="confirmation-overlay" class="overlay d-none">
+        <section id="confirmation-overlay" class="overlay d-none">
             <div class="popup">
                 <h1>Sei sicuro di voler eliminare?</h1>
                 <div class="d-flex justify-content-center">
                     <button id="btn-no" class="btn btn-primary me-3">NO</button>
-                    <form method="POST" data-base="{{ route('admin.posts.destroy', 0) }}">
+                    <form method="POST" data-base="{{ route('admin.posts.destroy', '*****') }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">SI</button>
                     </form>
                 </div>
             </div>
-        </section> --}}
+        </section>
     </div>
 @endsection
