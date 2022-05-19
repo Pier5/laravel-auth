@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')
 ->namespace('Admin')
@@ -30,3 +28,8 @@ Route::middleware('auth')
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/posts', 'PostController');
 });
+
+
+Route::get("{any?}", function() {
+    return view("guests.home");
+})->where("any", ".*");

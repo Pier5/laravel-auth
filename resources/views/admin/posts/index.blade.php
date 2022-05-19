@@ -12,6 +12,7 @@
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
+                            <th class="text-center" scope="col">ID</th>
                             <th class="text-center" scope="col">Titolo</th>
                             <th class="text-center" scope="col">Slug</th>
                             <th class="text-center" scope="col">Data Creazione</th>
@@ -21,21 +22,22 @@
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
+                                <td class="text-center">{{ $post->id }}</td>
                                 <td class="text-center">{{ $post->title }}</td>
                                 <td class="text-center">{{ $post->slug }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->updated_at)) }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->id) }}">Dettagli</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Modifica</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
                                 </td>
                                 <td class="text-center">
-                                    <form id="confirmation-overlay" action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                    <form id="confirmation-overlay" action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button id="confirmation-overlay" class="btn btn-danger btn-delete" data-id="{{ $post->id }}">Cancella</button>
+                                        <button id="confirmation-overlay" class="btn btn-danger btn-delete" data-id="{{ $post->slug }}">Cancella</button>
                                   </form>
                                 </td>
                             </tr>

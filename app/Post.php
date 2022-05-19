@@ -7,6 +7,11 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+     public function getRouteKeyName()
+ {
+     return 'slug';
+ }
+
     protected $fillable = [
         'title', 
         'description', 
