@@ -46,6 +46,7 @@ if (confirmationOverlay) {
 
     const btnNo = document.querySelector('#btn-no');
     btnNo.addEventListener('click', function() {
+        confirmationForm.action = '';
         confirmationOverlay.classList.add('d-none');
     });
 
