@@ -25,9 +25,11 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
-                </div><div class="mb-3">
+                </div>
+                <div class="mb-3">
                     <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">                </div>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">                
+                </div>
                 <button type="submit" class="btn btn-primary">Invia</button>
             </form>
         </div>
